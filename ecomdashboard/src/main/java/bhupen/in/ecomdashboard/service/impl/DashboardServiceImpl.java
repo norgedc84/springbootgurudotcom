@@ -60,6 +60,8 @@ public class DashboardServiceImpl implements DashboardService {
             totalRevenue = totalRevenue + companyRevenue.getRevenue();
 
         }
+
+
         populateCmpnyRev.put("crLabels", label.toString());
         populateCmpnyRev.put("crRevenue", _revenue.toString());
         populateCmpnyRev.put("totalExpense", currencyFormatter.format(totalExpense));
@@ -68,6 +70,21 @@ public class DashboardServiceImpl implements DashboardService {
 
 
         return populateCmpnyRev;
+    }
+
+    @Override
+    public HashMap<String, Object> getBestSellerCategoryDash() {
+        HashMap<String, Object> populateBestSeller = new HashMap<>();
+
+        List<ProductCategory> productCategoryList = productCategoryRepository.findAll();
+
+        List<String> bsLabels = new ArrayList<>();
+
+        for (ProductCategory productCategory : productCategoryList) {
+            bsLabels.add(productCategory.getCategoryName());
+        }
+        populateBestSeller.put("bsLabels", bsLabels.toString());
+        return populateBestSeller;
     }
 
 

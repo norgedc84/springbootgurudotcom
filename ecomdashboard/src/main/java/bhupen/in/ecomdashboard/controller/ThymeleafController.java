@@ -29,6 +29,13 @@ public class ThymeleafController {
          */
 
         model.addAttribute("ei", dashboardService.getAllEmployee());
+
+        /**
+         * Populate Best Selle Category Data
+         */
+
+        model.addAttribute("bs", dashboardService.getBestSellerCategoryDash());
+
         return "/dashboard";
     }
 
